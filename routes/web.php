@@ -19,8 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('admin')->namespace('Admin')->group(function(){
+
 	Route::match(['get','post'],'/','AdminController@login');
+
 	Route::group(['middleware'=>['admin']],function(){
+
 	Route::get('dashboard','AdminController@dashboard');
+	Route::get('logout','AdminController@logout');
 	});
 });
