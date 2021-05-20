@@ -1,1 +1,1 @@
-# It is a laravel project using version laravel version 5.8.
+# It is a laravel project using  laravel version 5.8.
