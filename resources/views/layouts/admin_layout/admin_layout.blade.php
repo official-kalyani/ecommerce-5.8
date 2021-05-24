@@ -79,6 +79,9 @@
 <script src="{{ url('js/backend_js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('js/backend_js/demo.js') }}"></script>
+<!--Custom admin js -->
+<script src="{{ url('js/backend_js/admin_scripts.js') }}"></script>
+<!--Custom admin js -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('js/backend_js/pages/dashboard.js') }}"></script>
 </body>

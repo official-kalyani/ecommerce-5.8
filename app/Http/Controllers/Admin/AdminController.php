@@ -7,11 +7,17 @@ use App\Http\Controllers\Controller;
 use Hash;
 use Auth;
 use Session;
+use App\Admin;
 class AdminController extends Controller
 {
     //
     public function dashboard(){
     	return view('admin.admin_dashboard');
+    }
+    public function settings(){
+        // echo "<pre>";print_r(Auth::guard('admin')->user());echo "</pre>";exit();
+        $adminDetails = Admin::where('email',Auth::guard('admin')->user()->email)->first();
+        return view('admin.admin_settings')->with(compact('adminDetails'));
     }
     public function login(Request $request){
     	// echo $password = Hash::make('123'); die;
@@ -45,5 +51,15 @@ class AdminController extends Controller
     public function logout(){
     	Auth::guard('admin')->logout();
     	return redirect('/admin');
+    }
+    public function chkCurrentPassword(Request $request){
+        $data = $request->all();
+        // echo '<pre>';print_r($data);die();
+        // echo Auth::guard('admin')->user()->password;die();
+        if (Hash::check($data['current_pwd'],Auth::guard('admin')->user()->password)) {
+           echo "true";
+        }else{
+            echo "false";
+        }
     }
 }
